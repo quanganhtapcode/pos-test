@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   /* Apple-inspired Color Palette */
   --color-background: #f8f9fa;
   --color-surface: #ffffff;
@@ -285,7 +285,7 @@ body:has(#headerNav:not(.hidden)) {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(248, 249, 250, 0.95);
+  background: var(--color-surface-elevated);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border-light);
@@ -354,7 +354,7 @@ body:has(#headerNav:not(.hidden)) {
 .header-nav {
   border-top: 1px solid var(--color-border-light);
   padding: var(--space-12) var(--space-16);
-  background: rgba(248, 249, 250, 0.95);
+  background: var(--color-surface-elevated);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -1403,15 +1403,18 @@ textarea.form-control {
     --color-secondary-hover: #3a3a3c;
     --color-secondary-active: #48484a;
     --color-border: rgba(255, 255, 255, 0.1);
-    --color-border-light: rgba(255, 255, 255, 0.05);
-  }
+    --color-border-light: rgba(255, 255, 255, 0.05);  }
   
   .header {
-    background: rgba(0, 0, 0, 0.85);
+    background: var(--color-surface-elevated);
+  }
+  
+  .header-nav {
+    background: var(--color-surface-elevated);
   }
   
   .bottom-nav {
-    background: rgba(28, 28, 30, 0.85);
+    background: var(--color-surface-elevated);
   }
 }
 
