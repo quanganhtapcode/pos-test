@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hệ thống POS - Bán hàng nội bộ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <h1 class="header__title">Hệ thống POS</h1>
+                <div class="header__cart" id="cartIcon">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Controls moved under header -->
+        <div class="header-nav hidden" id="headerNav">
+            <!-- View Toggle Controls -->
+            <div class="view-toggle">
+                <button class="btn btn--nav toggle-btn active" data-view="brand">
+                    <span class="nav-icon">🏷️</span>
+                    <span>Theo hãng</span>
+                </button>
+                <button class="btn btn--nav toggle-btn" data-view="category">
+                    <span class="nav-icon">📂</span>
+                    <span>Theo loại</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Pricing Mode Selection Screen -->
+        <div class="screen" id="pricingScreen">
+            <div class="container">
+                <div class="pricing-selection">
+                    <h2>Chọn chế độ định giá</h2>
+                    <div class="pricing-buttons">
+                        <button class="btn btn--primary btn--lg pricing-btn" data-mode="auto">
+                            <span>Giá tự động</span>
+                            <small>Sử dụng giá từ hệ thống</small>
+                        </button>
+                        <button class="btn btn--secondary btn--lg pricing-btn" data-mode="manual">
+                            <span>Tự nhập giá</span>
+                            <small>Có thể chỉnh sửa giá</small>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Selection Screen -->
+        <div class="screen hidden" id="productScreen">
+            <div class="container">
+                <!-- Brand Navigation -->
+                <div class="brand-nav" id="brandNav">
+                    <div class="brand-nav__container" id="brandNavContainer">
+                        <button class="brand-nav__item active" data-brand="castrol">Castrol</button>
+                        <button class="brand-nav__item" data-brand="caltex">Caltex</button>
+                        <button class="brand-nav__item" data-brand="abro">ABRO</button>
+                        <button class="brand-nav__item" data-brand="threebond">Threebond</button>
+                    </div>
+                </div>
+
+                <!-- Category Navigation (when in category view) -->
+                <div class="category-nav hidden" id="categoryNav">
+                    <div class="category-nav__container">
+                        <button class="category-nav__item active" data-category="nhot_oto">Nhớt ô tô</button>
+                        <button class="category-nav__item" data-category="nhot_xe_may">Nhớt xe máy</button>
+                        <button class="category-nav__item" data-category="keo_gioang">Keo gioăng</button>
+                        <button class="category-nav__item" data-category="keo_2_thanh_phan">Keo 2 thành phần</button>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="productGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Screen -->
+        <div class="screen hidden" id="cartScreen">
+            <div class="container">
+                <div class="cart-header">
+                    <h2>Giỏ hàng</h2>
+                    <button class="btn btn--secondary btn--sm" id="clearCart">🗑️ Xóa hết</button>
+                </div>
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <strong>Tổng cộng: <span id="cartTotal">0₫</span></strong>
+                </div>
+                <button class="btn btn--primary btn--full-width" id="proceedToCheckout">Thanh toán</button>
+            </div>
+        </div>
+
+        <!-- Checkout Screen -->
+        <div class="screen hidden" id="checkoutScreen">
+            <div class="container">
+                <div class="checkout-header">
+                    <h2>Thanh toán</h2>
+                    <button class="btn btn--secondary btn--sm" id="backToCart">← Quay lại giỏ hàng</button>
+                </div>
+                
+                <div class="checkout-content">
+                    <div class="checkout-items" id="checkoutItems">
+                        <!-- Checkout items will be loaded here -->
+                    </div>
+                    
+                    <div class="checkout-adjustments">
+                        <h3>Điều chỉnh giá</h3>
+                        <div class="adjustment-controls">
+                            <div class="form-group">
+                                <label class="form-label">Loại giảm giá</label>
+                                <select class="form-control" id="discountType">
+                                    <option value="amount">Giảm số tiền cố định</option>
+                                    <option value="none">Không giảm giá</option>
+                                    <option value="percent">Giảm phần trăm</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Giá trị giảm</label>
+                                <input type="number" class="form-control" id="discountValue" placeholder="0" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-notes">
+                        <div class="form-group">
+                            <label class="form-label">Ghi chú đơn hàng</label>
+                            <textarea class="form-control" id="orderNotes" rows="3" placeholder="Nhập ghi chú..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Tạm tính:</span>
+                        <span id="checkoutSubtotal">0₫</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Giảm giá:</span>
+                        <span id="checkoutDiscount">0₫</span>
+                    </div>
+                    <div class="summary-row total">
+                        <strong>Tổng cộng: <span id="checkoutTotal">0₫</span></strong>
+                    </div>
+                    <button class="btn btn--primary btn--full-width" id="completeOrder">Hoàn thành đơn hàng</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order History Screen -->
+        <div class="screen hidden" id="orderHistoryScreen">
+            <div class="container">
+                <div class="order-history-header">
+                    <h2>Lịch sử đơn hàng</h2>
+                    <button class="btn btn--secondary btn--sm" id="backToProductsFromHistory">← Quay lại</button>
+                </div>
+                <div class="order-list" id="orderList">
+                    <!-- Order history will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+
+    <!-- Apple-style Bottom Navigation (Footer) -->
+    <nav class="bottom-nav" id="bottomNav">
+        <div class="header-bottom-nav">
+            <button class="nav-item active" id="navProducts">
+                <span class="nav-icon">📦</span>
+                <span>Sản phẩm</span>
+            </button>
+            <button class="nav-item" id="navCart">
+                <span class="nav-icon">🛒</span>
+                <span>Giỏ hàng</span>
+                <span class="nav-badge" id="navCartBadge">0</span>
+            </button>
+            <button class="nav-item" id="navHistory">
+                <span class="nav-icon">📋</span>
+                <span>Lịch sử</span>
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        // Ngăn chặn zoom bằng wheel và gesture
+        document.addEventListener('wheel', function(e) {
+            if (e.ctrlKey) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Ngăn chặn gesture zoom trên touchpad
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gesturechange', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('gestureend', function(e) {
+            e.preventDefault();
+        });
+
+        // Ngăn chặn double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // Ngăn chặn pinch zoom
+        document.addEventListener('touchmove', function(event) {
+            if (event.scale !== 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>

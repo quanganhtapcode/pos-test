@@ -1,0 +1,122 @@
+{
+  "brands": [
+    {
+      "id": "castrol",
+      "name": "Castrol",
+      "products": [
+        {
+          "id": "castrol_gtx_15w40",
+          "name": "Castrol GTX 15W-40",
+          "category": "Nhớt ô tô",
+          "price": 245000,
+          "image": "/api/placeholder/150/150",
+          "brand": "Castrol"
+        },
+        {
+          "id": "castrol_magnatec_5w30",
+          "name": "Castrol Magnatec 5W-30",
+          "category": "Nhớt ô tô",
+          "price": 380000,
+          "image": "/api/placeholder/150/150",
+          "brand": "Castrol"
+        },
+        {
+          "id": "castrol_power1_10w40",
+          "name": "Castrol Power1 10W-40",
+          "category": "Nhớt xe máy",
+          "price": 85000,
+          "image": "/api/placeholder/150/150",
+          "brand": "Castrol"
+        }
+      ]
+    },
+    {
+      "id": "caltex",
+      "name": "Caltex",
+      "products": [
+        {
+          "id": "caltex_delo_15w40",
+          "name": "Caltex Delo 15W-40",
+          "category": "Nhớt ô tô",
+          "price": 220000,
+          "image": "/api/placeholder/150/150",
+          "brand": "Caltex"
+        },
+        {
+          "id": "caltex_havoline_5w30",
+          "name": "Caltex Havoline 5W-30",
+          "category": "Nhớt ô tô",
+          "price": 350000,
+          "image": "/api/placeholder/150/150",
+          "brand": "Caltex"
+        }
+      ]
+    },
+    {
+      "id": "abro",
+      "name": "ABRO",
+      "products": [
+        {
+          "id": "abro_gasket_maker",
+          "name": "ABRO Gasket Maker",
+          "category": "Keo gioăng",
+          "price": 45000,
+          "image": "/api/placeholder/150/150",
+          "brand": "ABRO"
+        },
+        {
+          "id": "abro_steel_weld",
+          "name": "ABRO Steel Weld",
+          "category": "Keo 2 thành phần",
+          "price": 65000,
+          "image": "/api/placeholder/150/150",
+          "brand": "ABRO"
+        }
+      ]
+    },
+    {
+      "id": "threebond",
+      "name": "Threebond",
+      "products": [
+        {
+          "id": "threebond_1184",
+          "name": "Threebond 1184",
+          "category": "Keo gioăng",
+          "price": 85000,
+          "image": "/api/placeholder/150/150",
+          "brand": "Threebond"
+        },
+        {
+          "id": "threebond_1401",
+          "name": "Threebond 1401",
+          "category": "Keo 2 thành phần",
+          "price": 120000,
+          "image": "/api/placeholder/150/150",
+          "brand": "Threebond"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "nhot_oto",
+      "name": "Nhớt ô tô",
+      "products": []
+    },
+    {
+      "id": "nhot_xe_may", 
+      "name": "Nhớt xe máy",
+      "products": []
+    },
+    {
+      "id": "keo_gioang",
+      "name": "Keo gioăng",
+      "products": []
+    },
+    {
+      "id": "keo_2_thanh_phan",
+      "name": "Keo 2 thành phần",
+      "products": []
+    }
+  ]
+}
